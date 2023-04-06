@@ -1,0 +1,20 @@
+// import { Ciudad } from '../clases/Ciudad'
+// import { Pais } from '../clases/Pais'
+// import { Provincia } from '../clases/Provincia'
+
+// interface Handlers {
+//   handleChangeSelectedPais: (evt: React.ChangeEvent<HTMLSelectElement>) => void
+//   handleChangeSelectedProvincia: (evt: React.ChangeEvent<HTMLSelectElement>) => void
+//   handleChangeSelectedCiudad: (evt: React.ChangeEvent<HTMLSelectElement>) => void
+// }
+
+// interface Filters {
+//   Paises: Pais[]
+//   provincias: Provincia[]
+//   ciudades: Ciudad[]
+// }
+
+// export interface PropSelect {
+//   handlers: Handlers
+//   filters: Filters
+// }

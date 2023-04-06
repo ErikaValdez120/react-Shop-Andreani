@@ -1,0 +1,69 @@
+// import '../styles/Form.scss'
+// import { PropSelect } from '../interfaces/Interface'
+
+// const Select = ({ handlers, filters }: PropSelect) => {
+//   const { handleChangeSelectedPais, handleChangeSelectedProvincia, handleChangeSelectedCiudad } =
+//     handlers
+//   const { Paises, provincias, ciudades } = filters
+
+//   return (
+//     <div className='contenedor-label'>
+//       <label className='titulo-label'>Pais</label>
+//       <select
+//         onChange={handleChangeSelectedPais}
+//         name='idPais'
+//         id='idPais'
+//         defaultValue={0}
+//         autoComplete='off'
+//       >
+//         <option disabled value={0}>
+//           Seleccione un Pais.
+//         </option>
+//         {Paises.map((pais) => (
+//           <option key={pais.idPais} value={pais.idPais}>
+//             {pais.nombre}
+//           </option>
+//         ))}
+//       </select>
+
+//       <br />
+//       <br />
+
+//       <label className='titulo-label'>Provincias</label>
+//       <select
+//         onChange={handleChangeSelectedProvincia}
+//         name='idProvincia'
+//         id='idProvincia'
+//         defaultValue={0}
+//         autoComplete='off'
+//       >
+//         <option value={0}>Seleccione una Provincia.</option>
+//         {provincias.map((provincia) => (
+//           <option key={provincia.idProvincia} value={provincia.idProvincia}>
+//             {provincia.nombre}
+//           </option>
+//         ))}
+//       </select>
+//       <br />
+//       <br />
+
+//       <label className='titulo-label'>Ciudades</label>
+//       <select
+//         onChange={handleChangeSelectedCiudad}
+//         name='idCiudad'
+//         id='idCiudad'
+//         defaultValue={0}
+//         autoComplete='off'
+//       >
+//         <option value={0}>Seleccione un Ciudad.</option>
+//         {ciudades.map((ciudad) => (
+//           <option key={ciudad.idCiudad} value={ciudad.idCiudad}>
+//             {ciudad.nombre}
+//           </option>
+//         ))}
+//       </select>
+//     </div>
+//   )
+// }
+
+// export default Select
