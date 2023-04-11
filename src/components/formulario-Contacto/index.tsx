@@ -30,14 +30,17 @@ const Form = () => {
   }, [])
 */
 
-/*¿Qué hace useEffect? Al usar este Hook, le estamos indicando a React que el componente 
+  /*¿Qué hace useEffect? Al usar este Hook, le estamos indicando a React que el componente 
 tiene que hacer algo después de renderizarse.*/
 
+  /*
   useEffect(() => {
     axios('http://localhost:5098/api/usuario').then(({ data }) =>
       console.log('Peticion Axios', data)
     )
   }, [])
+
+  */
 
   return (
     <div>
