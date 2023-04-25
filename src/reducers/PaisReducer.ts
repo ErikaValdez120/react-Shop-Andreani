@@ -1,13 +1,38 @@
 import { Pais} from '../clases/Pais'
-import { AGREGAR_PAIS } from '../actions/PaisAction'
+import { AGREGAR_PAIS ,agregarPais} from '../actions/PaisAction'
+import { createSlice} from '@reduxjs/toolkit'
 
 const initialState ={
-  data:[],
+  data:['1,Argentina'],
 }
 
 interface stateReducer {
   data: Pais[]
 }
+
+// const reducer= (state= initialState,action ) => {
+//   return state;
+// } 
+
+// export default (props) =>{
+//   const [state,dispatch] = React.useReducer(reducer,reducer())
+
+//   return (
+//     <div>
+//       <Select
+//             title='Pais'
+//             name='idPais'
+//             defaultValue={0}
+//             TitleoptionDefault='Seleccione un Pais'
+//             onChange={handleChangeSelectedPais}
+//             disabled={values.idPais}
+//           >
+//             {paisMap()}
+//       </Select>
+//     </div>
+//   );
+// };
+
 
 /*
 
@@ -42,18 +67,18 @@ const paisSlice = createSlice({
   initialState: [],
   reducers:{
     // Define los reducers dentro del objeto `reducers`
-    agregarPais : (state:stateReducer = initialState, action:PaisAction ) => {
+    agregarPais : (state) => {
       // Maneja la acción "agregarPais" y actualiza el estado
       // Puedes acceder a la acción y su payload con `action.payload`
-      state.push(action.payload);
+      state.push();
     },
     actualizarPais: (state, action) => {
       // Maneja la acción "actualizarPais" y actualiza el estado
       // Puedes acceder a la acción y su payload con `action.payload`
-      const { id, nombre, capital, poblacion } = action.payload;
+      const { id, nombre} = action.payload;
       const paisIndex = state.findIndex(pais => pais.id === id);
       if (paisIndex !== -1) {
-        state[paisIndex] = { id, nombre, capital, poblacion };
+        state[paisIndex] = { id, nombre};
       }
     },
     eliminarPais: (state, action) => {

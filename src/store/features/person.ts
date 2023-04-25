@@ -1,10 +1,9 @@
 import type { IState } from '@architecture-it/core'
-import type { IPerson } from 'interfaces'
+import type { IPerson } from '.../interfaces/IPerson'
 import type { RootState } from '..'
 import type { combineReducers } from '@reduxjs/toolkit'
 import personReducer from '../features/person'
-
-// omitido por brevedad
+import { createSlice } from '@reduxjs/toolkit'
 
 import { getAll } from '../features/person/asyncActions'
 

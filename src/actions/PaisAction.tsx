@@ -6,18 +6,23 @@ const ELIMINAR_PAIS = 'ELIMINAR_PAIS'
 
 export type AGREGAR_PAIS = () => {
   type: 'AGREGAR_PAIS_'
+  payload?: 0
+}
+
+export type agregarPais = () => {
+  type: 'AGREGAR_PAIS'
   payload?: any
 }
-/*
+
 export type ACTUALIZAR_PAIS = (
   idPais,
   pais
 ) => {
   type: 'ACTUALIZAR_PAIS'
-  payload?: idPais
+  payload: idPais
   pais
 }
-
+/*
 export type ELIMINAR_PAIS = (idPais) => {
   type: 'ELIMINAR_PAIS'
   payload?: idPais
