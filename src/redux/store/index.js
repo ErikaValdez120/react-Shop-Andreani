@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from '@redux/tolkie'
 import createSagaMiddleware from 'redux-saga'
 
 import rootReducers from '../reducers'

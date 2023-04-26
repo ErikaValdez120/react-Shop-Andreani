@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { hallazgosReducers, genericoReducers } from './HallazgosReducers'
+import { hallazgosReducers, genericoReducers } from './FormularioReducers'
 
 const rootReducers = combineReducers({
   hallazgosReducers: hallazgosReducers,
