@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom/client'
 import App from './routes/App'
 import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
-import { store } from './store'
+import ConfigureStore from '../redux/store'
+
+//import {msalConfig} from "./authConfig"
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+
+const store = ConfigureStore()
 root.render(
   <React.StrictMode>
     <Provider store={store}>
