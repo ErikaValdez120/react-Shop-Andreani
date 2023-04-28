@@ -9,7 +9,7 @@ const headerConfig = {
 }
 
 export const getPais = () => {
-  return InstanceHallazgosAxios.get(`/Pais/`, headerConfig)
+  return InstanceHallazgosAxios.get(`/Pais`)
     .then((response) => {
       return response.data
     })
@@ -19,7 +19,7 @@ export const getPais = () => {
 }
 
 export const getCiudad = () => {
-  return InstanceHallazgosAxios.get('/Ciudad', headerConfig)
+  return InstanceHallazgosAxios.get('/Ciudad')
     .then((response) => {
       return response.data
     })
@@ -29,7 +29,7 @@ export const getCiudad = () => {
 }
 
 export const getProvincia = () => {
-  return InstanceHallazgosAxios.get('/Provincia', headerConfig)
+  return InstanceHallazgosAxios.get('/Provincia')
     .then((response) => {
       return response.data
     })
@@ -41,7 +41,7 @@ export const getProvincia = () => {
 export const postUsuario = (param) => {
   const data = JSON.stringify(param)
 
-  return InstanceHallazgosAxios.post('/Usuario', data, headerConfig)
+  return InstanceHallazgosAxios.post('/Usuario', data)
     .then((response) => {
       return response
     })

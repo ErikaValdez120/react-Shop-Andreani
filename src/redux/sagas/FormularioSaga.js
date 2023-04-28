@@ -1,7 +1,7 @@
-import { actionChannel, call, put, takeLatest, takelastest } from 'redux-saga/effects'
+import { actionChannel, call, put, takeLatest } from 'redux-saga/effects'
 
 import * as ActionTypes from '../const/actionTypes'
-import * as API from '../api/hallasgozAPI'
+import * as API from '../api/formularioAPI'
 
 function* asyncGetCiudad() {
   try {
@@ -66,7 +66,7 @@ function* asyncPostUsuario({ payload }) {
     if (usuario.id !== 0) {
       // dispatch action to change redux state
       yield put({
-        type: ActionTypes.POST_USUARIO_SUCCES,
+        type: ActionTypes.POST_USUARIO_SUCCESS,
         response: usuario,
       })
     } else {
@@ -84,9 +84,10 @@ function* asyncPostUsuario({ payload }) {
   }
 }
 
-export default function* HallazgosSaga() {
-  yield takelastest(ActionTypes.GET_CIUDAD, asyncGetCiudad)
-  yield takelastest(ActionTypes.GET_PAIS, asyncGetPais)
-  yield takelastest(ActionTypes.GET_PROVINCIA, asyncGetProvincia)
+export default function* FormularioSaga() {
+  yield takeLatest(ActionTypes.GET_CIUDAD, asyncGetCiudad)
+  yield takeLatest(ActionTypes.GET_PAIS, asyncGetPais)
+  yield takeLatest(ActionTypes.GET_PROVINCIA, asyncGetProvincia)
   yield takeLatest(ActionTypes.POST_USUARIO, asyncPostUsuario)
+  yield takeLatest(ActionTypes.POST_USUARIO_SUCCESS, asyncPostUsuario)
 }

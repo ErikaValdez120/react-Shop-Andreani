@@ -13,3 +13,7 @@ const brasil = new Pais(2, 'Brasil')
 const japon = new Pais(3, 'Japon')
 
 export const Paises = [argentina, brasil, japon]
+
+export interface IPais {
+  data: Pais[]
+}

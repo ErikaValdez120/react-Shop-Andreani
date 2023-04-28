@@ -5,15 +5,24 @@ import { useForm } from '../useHooks/useForm'
 import '../../styles/Form.scss'
 import { isEmptyString } from '../../ValidationsLogic/validations'
 import { useEffect } from 'react'
-import axios from 'axios'
+//import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCiudad, getPais, getProvincia } from '../../redux/action/formularioAction'
+import { ContactForm } from '../../clases/ContactoForm'
+import { formularioReducers } from '../../redux/reducers/FormularioReducers'
 
 const Form = () => {
+  // const dispatch = useDispatch()
+  // const filas: Array<ContactForm> = useSelector((state:any)=>
+  //   (state: any )=> state.formularioReducers);
+
   const {
     values,
     errorMessage,
     isValidSelects,
-    provincias,
-    ciudades,
+    paises,
+    provinciasFiltradas,
+    ciudadesFiltradas,
     handleInputChange,
     handleChangeSelectedPais,
     handleChangeSelectedProvincia,
@@ -21,6 +30,19 @@ const Form = () => {
     handleForm,
   } = useForm()
 
+  // useEffect(() => {
+  //   dispatch(getPais())
+  //   dispatch(getProvincia())
+  //   dispatch(getCiudad())
+  // }, [])
+
+  // useEffect(()=>{
+  //   if(filas !== undefined){
+  //     if(filas.length > 1){
+  //       set (filas);
+  //     }
+  //   }
+  // },[filas]);
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /*
   useEffect(() => {
@@ -98,7 +120,7 @@ tiene que hacer algo después de renderizarse.*/
                 onChange={handleChangeSelectedPais}
                 disabled={values.idPais}
               >
-                {paisMap()}
+                {paisMap(paises)}
               </Select>
             </div>
 
@@ -111,7 +133,7 @@ tiene que hacer algo después de renderizarse.*/
                 onChange={handleChangeSelectedProvincia}
                 disabled={values.idProvincia}
               >
-                {provMap(provincias)}
+                {provMap(provinciasFiltradas)}
               </Select>
             </div>
 
@@ -124,7 +146,7 @@ tiene que hacer algo después de renderizarse.*/
                 onChange={handleChangeSelectedCiudad}
                 disabled={values.idCiudad}
               >
-                {ciudadMap(ciudades)}
+                {ciudadMap(ciudadesFiltradas)}
               </Select>
             </div>
 

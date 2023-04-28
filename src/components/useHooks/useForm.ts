@@ -3,6 +3,9 @@ import { Ciudad, Ciudades } from '../../clases/Ciudad'
 import { ContactForm } from '../../clases/ContactoForm'
 import { Provincia, Provincias } from '../../clases/Provincia'
 import { validate, validateSelects } from '../formulario-Contacto/helpers'
+import { getCiudad, getPais, getProvincia, postUsuario } from '../../redux/action/formularioAction'
+import { useDispatch, useSelector } from 'react-redux'
+import { Pais } from '../../clases/Pais'
 
 export const useForm = () => {
   const [values, setValues] = useState<ContactForm>(new ContactForm())
@@ -10,8 +13,41 @@ export const useForm = () => {
   const [idProvincia, setIdProvincia] = useState<number>(0)
   const [idCiudad, setIdCiudad] = useState<number>(0)
   const [isValidSelects, setIsValidSelects] = useState<boolean>(false)
-  const [provincias, setProvincias] = useState<Provincia[]>(new Array<Provincia>())
-  const [ciudades, setCiudades] = useState<Ciudad[]>(new Array<Ciudad>())
+  const [provinciasFiltradas, setProvinciasFiltradas] = useState<Provincia[]>(
+    new Array<Provincia>()
+  )
+  const [ciudadesFiltradas, setCiudadesFiltradas] = useState<Ciudad[]>(new Array<Ciudad>())
+
+  const dispatch = useDispatch()
+  //const [filas,setFilas] =useState<ContactForm[]>( new Array<ContactForm> ())
+  const paises: Array<Pais> = useSelector((state: any) => state.formularioReducers.paises)
+  const provincias: Array<Provincia> = useSelector(
+    (state: any) => state.formularioReducers.provincias
+  )
+  const ciudades: Array<Ciudad> = useSelector((state: any) => state.formularioReducers.ciudades)
+  useEffect(() => {
+    dispatch(getPais())
+    dispatch(getProvincia())
+    dispatch(getCiudad())
+  }, [])
+
+  useEffect(() => {
+    if (paises.length > 0) {
+      console.log(paises)
+    }
+  }, [paises])
+
+  useEffect(() => {
+    if (provincias !== undefined && provincias.length > 0) {
+      console.log(provincias)
+    }
+  }, [provincias])
+
+  useEffect(() => {
+    if (ciudades !== undefined && ciudades.length > 0) {
+      console.log(ciudades)
+    }
+  }, [ciudades])
 
   const errorMessage = validate(values)
 
@@ -67,22 +103,22 @@ export const useForm = () => {
   // useCallback((), []) // GUARDA EN MEMORIA UNA FUNCION
 
   const FilterProvincia = useCallback(
-    () => Provincias.filter((provincia) => provincia.idPais === idPais),
+    () => provincias.filter((provincia) => provincia.idPais === idPais),
     [idPais]
   )
 
   const FilterCiudad = useCallback(
-    () => Ciudades.filter((ciudad) => ciudad.idProvincia === idProvincia),
+    () => ciudades.filter((ciudad) => ciudad.idProvincia === idProvincia),
     [idProvincia]
   )
 
   useEffect(() => {
-    setProvincias(FilterProvincia)
+    setProvinciasFiltradas(FilterProvincia)
   }, [FilterProvincia])
 
   useEffect(() => {
-    setCiudades(FilterCiudad)
-  }, [FilterCiudad, FilterProvincia])
+    setCiudadesFiltradas(FilterCiudad)
+  }, [FilterCiudad])
 
   useEffect(() => {
     validateSelects(idPais, idProvincia, idCiudad, setIsValidSelects)
@@ -92,8 +128,9 @@ export const useForm = () => {
     values,
     errorMessage,
     isValidSelects,
-    provincias,
-    ciudades,
+    paises,
+    provinciasFiltradas,
+    ciudadesFiltradas,
     handleInputChange,
     handleChangeSelectedPais,
     handleChangeSelectedProvincia,
@@ -101,3 +138,8 @@ export const useForm = () => {
     handleForm,
   }
 }
+/*
+function dispatch(arg0: { type: string; payload: any }) {
+  throw new Error('Function not implemented.')
+}
+*/

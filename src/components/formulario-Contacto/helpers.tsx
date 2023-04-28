@@ -1,7 +1,9 @@
+import useDispatch from 'react-redux'
 import { Ciudad } from '../../clases/Ciudad'
 import { ContactForm } from '../../clases/ContactoForm'
-import { Paises } from '../../clases/Pais'
+import { Pais, Paises } from '../../clases/Pais'
 import { Provincia } from '../../clases/Provincia'
+import { postUsuario } from '../../redux/action/formularioAction'
 //import { isEmptyString, isPositiveNumber } from '../../ValidationsLogic/validations'
 
 const isEmptyString = (texto: string) => !texto.trim()
@@ -15,7 +17,8 @@ export const validate = (values: ContactForm) => {
   if (isPositiveNumber(values.idPais)) return 'Seleccione un Pais'
   if (isPositiveNumber(values.idProvincia)) return 'Seleccione un Provincia'
   if (isPositiveNumber(values.idCiudad)) return 'Seleccione  Ciudad'
-
+  // const dispatch = useDispatch()
+  //dispatch(postUsuario(values)) // ejecuta la accion postUsuario (valores del nuevo contacto)
   return '' // SOLUCION PROVICIONAL
 }
 
@@ -36,8 +39,8 @@ export const validateSelects = (
 }
 
 //componentes
-export const paisMap = () => {
-  return Paises.map((pais) => (
+export const paisMap = (paises: Array<Pais>) => {
+  return paises.map((pais) => (
     <option key={pais.idPais} value={pais.idPais}>
       {pais.nombre}
     </option>

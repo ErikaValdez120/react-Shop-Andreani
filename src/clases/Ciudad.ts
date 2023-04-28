@@ -61,3 +61,7 @@ export const Ciudades = [
   ciudadOsa1,
   ciudadOsa2,
 ]
+
+export interface ICiudad {
+  data: Ciudad[]
+}

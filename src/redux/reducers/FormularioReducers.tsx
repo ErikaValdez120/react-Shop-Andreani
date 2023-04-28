@@ -21,7 +21,7 @@ export function formularioReducers(state = ExampleState, action: any) {
     case types.GET_PROVINCIA_SUCCESS:
       return { ...state, provincias: action.response }
 
-    case types.GET_CIUDAD_SUCCES:
+    case types.GET_CIUDAD_SUCCESS:
       return { ...state, ciudades: action.response }
 
     case types.POST_USUARIO_SUCCESS:

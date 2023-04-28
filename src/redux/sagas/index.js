@@ -1,7 +1,7 @@
 import { all } from 'redux-saga/effects'
 
-import HallazgosSaga from './HallazgosSaga'
+import FormulariosSaga from './FormularioSaga'
 
 export default function* rootSaga() {
-  yield all([HallazgosSaga()])
+  yield all([FormulariosSaga()])
 }

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './routes/App'
 import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
-import ConfigureStore from '../redux/store'
+import ConfigureStore from '../src/redux/store'
 
 //import {msalConfig} from "./authConfig"
 

@@ -33,3 +33,7 @@ export const Provincias = [
   provJp2,
   provJp3,
 ]
+
+export interface IProvincia {
+  data: Provincia[]
+}

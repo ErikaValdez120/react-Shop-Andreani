@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 
-import { hallazgosReducers, genericoReducers } from './FormularioReducers'
+import { formularioReducers } from './FormularioReducers'
 
 const rootReducers = combineReducers({
-  hallazgosReducers: hallazgosReducers,
-  genericoReducers: genericoReducers,
+  formularioReducers: formularioReducers,
+  //genericoReducers: genericoReducers,
 })
 
 export default rootReducers
