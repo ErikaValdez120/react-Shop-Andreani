@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Ciudad, Ciudades } from '../../clases/Ciudad'
+import { Ciudad } from '../../clases/Ciudad'
 import { ContactForm } from '../../clases/ContactoForm'
-import { Provincia, Provincias } from '../../clases/Provincia'
+import { Provincia } from '../../clases/Provincia'
 import { validate, validateSelects } from '../formulario-Contacto/helpers'
 import { getCiudad, getPais, getProvincia, postUsuario } from '../../redux/action/formularioAction'
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,7 +19,7 @@ export const useForm = () => {
   const [ciudadesFiltradas, setCiudadesFiltradas] = useState<Ciudad[]>(new Array<Ciudad>())
 
   const dispatch = useDispatch()
-  //const [filas,setFilas] =useState<ContactForm[]>( new Array<ContactForm> ())
+
   const paises: Array<Pais> = useSelector((state: any) => state.formularioReducers.paises)
   const provincias: Array<Provincia> = useSelector(
     (state: any) => state.formularioReducers.provincias
@@ -50,6 +50,7 @@ export const useForm = () => {
   }, [ciudades])
 
   const errorMessage = validate(values)
+  dispatch(postUsuario(validate))
 
   const handleInputChange = (event: changeEvent) => {
     const { name, value } = event.target

@@ -1,7 +1,6 @@
-import useDispatch from 'react-redux'
 import { Ciudad } from '../../clases/Ciudad'
 import { ContactForm } from '../../clases/ContactoForm'
-import { Pais, Paises } from '../../clases/Pais'
+import { Pais } from '../../clases/Pais'
 import { Provincia } from '../../clases/Provincia'
 import { postUsuario } from '../../redux/action/formularioAction'
 //import { isEmptyString, isPositiveNumber } from '../../ValidationsLogic/validations'
@@ -17,8 +16,8 @@ export const validate = (values: ContactForm) => {
   if (isPositiveNumber(values.idPais)) return 'Seleccione un Pais'
   if (isPositiveNumber(values.idProvincia)) return 'Seleccione un Provincia'
   if (isPositiveNumber(values.idCiudad)) return 'Seleccione  Ciudad'
-  // const dispatch = useDispatch()
-  //dispatch(postUsuario(values)) // ejecuta la accion postUsuario (valores del nuevo contacto)
+
+  //dispatch(postUsuario(validate)) // ejecuta la accion postUsuario (valores del nuevo contacto)
   return '' // SOLUCION PROVICIONAL
 }
 
@@ -63,3 +62,7 @@ export const ciudadMap = (ciudades: Ciudad[]) => {
     </option>
   ))
 }
+// function dispatch(arg0: { type: string; payload: any }) {
+
+//   throw new Error('Function not implemented.')
+// }

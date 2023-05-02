@@ -6,16 +6,8 @@ import '../../styles/Form.scss'
 import { isEmptyString } from '../../ValidationsLogic/validations'
 import { useEffect } from 'react'
 //import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCiudad, getPais, getProvincia } from '../../redux/action/formularioAction'
-import { ContactForm } from '../../clases/ContactoForm'
-import { formularioReducers } from '../../redux/reducers/FormularioReducers'
 
 const Form = () => {
-  // const dispatch = useDispatch()
-  // const filas: Array<ContactForm> = useSelector((state:any)=>
-  //   (state: any )=> state.formularioReducers);
-
   const {
     values,
     errorMessage,
