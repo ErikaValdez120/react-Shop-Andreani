@@ -1,11 +1,17 @@
 import axios from 'axios'
+import { ContactForm } from '../../clases/ContactoForm'
 
 const InstanceHallazgosAxios = axios.create({ baseURL: 'http://localhost:5098/api' })
 const headerConfig = {
   headers: {
-    'Content Type': 'application/json',
+    'Content-Type': 'application/json',
+
     accept: 'application/json',
+
+    'Access-Control-Allow-Origin': '*',
   },
+
+  mode: 'no-cors',
 }
 
 export const getPais = () => {
@@ -38,10 +44,10 @@ export const getProvincia = () => {
     })
 }
 
-export const postUsuario = (param) => {
+export const postUsuario = (param: ContactForm) => {
   const data = JSON.stringify(param)
 
-  return InstanceHallazgosAxios.post('/Usuario', data)
+  return InstanceHallazgosAxios.post('/Usuario', data, headerConfig)
     .then((response) => {
       return response
     })

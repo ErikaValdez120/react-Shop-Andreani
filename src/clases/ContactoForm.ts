@@ -6,7 +6,7 @@ export class ContactForm {
   idPais: number
   idProvincia: number
   idCiudad: number
-
+  idUser: number
   constructor() {
     this.nombre = ''
     this.apellido = ''
@@ -15,5 +15,6 @@ export class ContactForm {
     this.idPais = 0
     this.idProvincia = 0
     this.idCiudad = 0
+    this.idUser = 0
   }
 }

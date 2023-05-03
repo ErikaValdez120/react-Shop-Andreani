@@ -2,14 +2,13 @@ import * as types from '../const/actionTypes'
 import { Pais } from '../../clases/Pais'
 import { Provincia } from '../../clases/Provincia'
 import { Ciudad } from '../../clases/Ciudad'
-import { ContactForm } from '../../clases/ContactoForm'
 
 const ExampleState = {
   paises: Array<Pais>(),
   provincias: Array<Provincia>(),
   ciudades: Array<Ciudad>(),
-  usuario: ContactForm,
-  pais: {},
+  usuario: undefined,
+  pais: {}, // no se usa
   postRespuesta: undefined,
 }
 
@@ -25,27 +24,12 @@ export function formularioReducers(state = ExampleState, action: any) {
       return { ...state, ciudades: action.response }
 
     case types.POST_USUARIO_SUCCESS:
-      return { ...state, usuario: action.response }
+      return { ...state, usuario: action.response, postRespuesta: true }
 
     case types.POST_USUARIO_FAILED:
-      return { ...state, postRespues: false }
-
+      return { ...state, usuario: action.response, postRespuesta: false }
+    //usuario: action.response.data no funciona / usuario: action.response,
     default:
       return state
   }
 }
-
-/*
-export function genericoReducers(state = ExampleState, action: any) {
-  switch (action.type) {
-    case types.GET_GENERICO_SUCCESS:
-      return { ...state, generico: action.response }
-      break
-
-    default:
-      return state
-      break
-  }
-}
-
-*/

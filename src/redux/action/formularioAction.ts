@@ -1,3 +1,4 @@
+import { ContactForm } from '../../clases/ContactoForm'
 import * as ActionTypes from '../const/actionTypes'
 
 export function getProvincia() {
@@ -18,7 +19,7 @@ export function getCiudad() {
   }
 }
 
-export function postUsuario(param) {
+export function postUsuario(param: ContactForm) {
   return {
     type: ActionTypes.POST_USUARIO,
     payload: param,

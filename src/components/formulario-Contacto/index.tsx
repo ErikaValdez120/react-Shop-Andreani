@@ -5,6 +5,7 @@ import { useForm } from '../useHooks/useForm'
 import '../../styles/Form.scss'
 import { isEmptyString } from '../../ValidationsLogic/validations'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 //import axios from 'axios'
 
 const Form = () => {
@@ -55,6 +56,18 @@ tiene que hacer algo después de renderizarse.*/
   }, [])
 
   */
+
+  const postRespuesta: any = useSelector((state: any) => state.FormularioReducer?.postRespuesta)
+
+  useEffect(() => {
+    if (postRespuesta !== undefined) {
+      if (postRespuesta) {
+        alert('Se guardo correctamente POST')
+      } else {
+        alert('ocurrio un error 400 POST')
+      }
+    }
+  }, [postRespuesta])
 
   return (
     <div>

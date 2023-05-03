@@ -1,4 +1,4 @@
-import { actionChannel, call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 
 import * as ActionTypes from '../const/actionTypes'
 import * as API from '../api/formularioAPI'
@@ -61,27 +61,40 @@ function* asyncGetPais() {
 
 function* asyncPostUsuario({ payload }) {
   try {
-    var usuario = yield call(API.postUsuario, payload)
+    var response = yield call(API.postUsuario, payload)
 
-    if (usuario.id !== 0) {
-      // dispatch action to change redux state
+    if (response) {
       yield put({
         type: ActionTypes.POST_USUARIO_SUCCESS,
-        response: usuario,
-      })
-    } else {
-      yield put({
-        type: ActionTypes.POST_USUARIO_FAILED,
-        // eslint-disable-next-line no-undef
-        message: error.message,
+        response,
       })
     }
   } catch (error) {
     yield put({
       type: ActionTypes.POST_USUARIO_FAILED,
-      message: error.message,
+      response: error.response,
     })
   }
+
+  // try {
+  //   // 2 forma
+  //   var usuario = yield call(API.postUsuario, payload)
+
+  //   if (usuario) {
+  //     yield put({
+  //       type: ActionTypes.POST_USUARIO_SUCCESS,
+
+  //       response: usuario,
+  //     })
+  //   }
+
+  //   // dispatch action to change redux state
+  // } catch (error) {
+  //   yield put({
+  //     type: ActionTypes.POST_USUARIO_FAILED,
+  //     response: error.response,
+  //   })
+  // }
 }
 
 export default function* FormularioSaga() {

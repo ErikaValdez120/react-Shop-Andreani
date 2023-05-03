@@ -20,6 +20,8 @@ export const useForm = () => {
 
   const dispatch = useDispatch()
 
+  //const postRespuesta: any = useSelector((state: any) => state.FormularioReducer?.postRespuesta)
+  const usuario: any = useSelector((state: any) => state.formularioReducers?.usuario)
   const paises: Array<Pais> = useSelector((state: any) => state.formularioReducers.paises)
   const provincias: Array<Provincia> = useSelector(
     (state: any) => state.formularioReducers.provincias
@@ -30,6 +32,26 @@ export const useForm = () => {
     dispatch(getProvincia())
     dispatch(getCiudad())
   }, [])
+
+  useEffect(() => {
+    if (usuario !== undefined) {
+      if (usuario.status === 200) {
+        alert('Se guardo correctamente')
+      } else {
+        alert('ocurrio un error 400')
+      }
+    }
+  }, [usuario])
+
+  // useEffect(() => {
+  //   if (postRespuesta !== undefined) {
+  //     if (postRespuesta) {
+  //       alert('Se guardo correctamente')
+  //     } else {
+  //       alert('ocurrio un error 400')
+  //     }
+  //   }
+  // }, [postRespuesta])
 
   useEffect(() => {
     if (paises.length > 0) {
@@ -50,7 +72,6 @@ export const useForm = () => {
   }, [ciudades])
 
   const errorMessage = validate(values)
-  dispatch(postUsuario(validate))
 
   const handleInputChange = (event: changeEvent) => {
     const { name, value } = event.target
@@ -92,11 +113,11 @@ export const useForm = () => {
 
   const handleForm = (event: EventSubmit) => {
     event.preventDefault()
-
+    if (errorMessage === '') {
+      dispatch(postUsuario(values))
+    }
     console.log('fix warning', idCiudad)
     console.log('Values=', values)
-
-    alert('FORMULARIO ENVIADO')
   }
 
   // useEffect((), []) NO RENDERIZA, CONTROLA **EFECTOS SECUNDARIOS**
@@ -139,8 +160,3 @@ export const useForm = () => {
     handleForm,
   }
 }
-/*
-function dispatch(arg0: { type: string; payload: any }) {
-  throw new Error('Function not implemented.')
-}
-*/

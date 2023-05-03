@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware } from '@reduxjs/toolkit'
+import { applyMiddleware } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
-
+import { legacy_createStore as createStore } from 'redux'
 import rootReducers from '../reducers'
 import rootSaga from '../sagas'
 
