@@ -102,5 +102,4 @@ export default function* FormularioSaga() {
   yield takeLatest(ActionTypes.GET_PAIS, asyncGetPais)
   yield takeLatest(ActionTypes.GET_PROVINCIA, asyncGetProvincia)
   yield takeLatest(ActionTypes.POST_USUARIO, asyncPostUsuario)
-  yield takeLatest(ActionTypes.POST_USUARIO_SUCCESS, asyncPostUsuario)
 }
